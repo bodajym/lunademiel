@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Javi & María · San Francisco</title>
+<meta name="description" content="Nuestro itinerario de luna de miel en San Francisco y Sausalito.">
+<meta name="theme-color" content="#0f2233">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="J&M en SF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2233'/%3E%3Cpath d='M14 50V14M50 50V14M4 40 Q14 46 14 16 Q32 50 50 16 Q50 46 60 40M2 42h60' stroke='%23e2533c' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&family=Pinyon+Script&display=swap">
+<style>
+/* Concepto: cielo de la bahía arriba con el puente dibujándose entre la niebla; abajo, el día como una línea de marea con paradas que se tachan */
+:root{
+  --night:#0f2233;      /* bahía al amanecer */
+  --night-2:#1c3a52;
+  --fog:#eef2f4;        /* niebla */
+  --paper:#ffffff;
+  --ink:#16242f;
+  --muted:#5f707c;
+  --line:#d8e0e5;
+  --bridge:#e2533c;     /* International Orange */
+  --bridge-soft:#fbe5e0;
+  --kelp:#2d7a5c;
+  --kelp-soft:#dff0e7;
+  --display:"Gloock", Georgia, "Times New Roman", serif;
+  --body:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  --script:"Pinyon Script", "Snell Roundhand", cursive;
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+@media (prefers-color-scheme: dark){:root{
+  --fog:#0d1820;--paper:#15232d;--ink:#e7eef2;--muted:#94a6b2;--line:#263845;
+  --bridge:#ff6b52;--bridge-soft:#3b221d;--kelp:#5fcc9c;--kelp-soft:#173329;color-scheme:dark}}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.confirm{display:contents}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--fog);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.gut{padding-left:max(18px,env(safe-area-inset-left));padding-right:max(18px,env(safe-area-inset-right))}
+.wrap{max-width:680px;margin:0 auto}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#f4f7f9;
+  background:radial-gradient(120% 80% at 70% 0%, #f2a77a33 0%, transparent 55%),linear-gradient(180deg,var(--night) 0%,var(--night-2) 70%,#2c5470 100%);
+  padding-top:calc(env(safe-area-inset-top) + 34px)}
+.hero-text{position:relative;z-index:3;padding-bottom:8px}
+.hero-grid{display:grid;grid-template-columns:1fr clamp(112px,30vw,210px);gap:18px 22px;align-items:end}
+.hero-copy{grid-column:1;grid-row:1;min-width:0}
+.portrait{grid-column:2;grid-row:1;margin:0;align-self:start;position:relative;opacity:0;animation:rise 1.1s .35s var(--ease) forwards}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%;
+  border-radius:999px 999px 16px 16px;border:3px solid #ffd9cc;box-shadow:0 18px 40px -18px #000c}
+.portrait::after{content:"♥";position:absolute;right:-6px;bottom:-6px;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;
+  background:var(--bridge);color:#fff;font-size:16px;box-shadow:0 6px 14px -6px #000a;animation:beat 2.4s 1.6s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}12%{transform:scale(1.18)}24%{transform:scale(1)}36%{transform:scale(1.12)}48%{transform:scale(1)}}
+@media (max-width:560px){.hero-grid{grid-template-columns:1fr}.portrait{grid-row:1;grid-column:1;width:150px}.hero-copy{grid-row:2}}
+
+/* origen */
+.origin{position:relative;margin-top:34px;border-radius:22px;overflow:hidden;background:#000;isolation:isolate}
+.origin img{display:block;width:100%;height:clamp(320px,90vw,520px);object-fit:cover;object-position:50% 62%;transform:scale(1.04);transition:transform 6s ease-out}
+.origin.seen img{transform:scale(1)}
+.origin figcaption{position:absolute;inset:auto 0 0 0;padding:60px 20px 20px;color:#fff;background:linear-gradient(to top,#0f2233ee,transparent)}
+.origin .script{font-family:var(--script);font-size:38px;line-height:1;color:#ffd9cc;display:block}
+.origin .line{font-family:var(--display);font-size:20px}
+.names{font-family:var(--script);font-size:clamp(40px,11vw,64px);line-height:1;color:#ffd9cc;margin:0;opacity:0;animation:rise 1s .2s var(--ease) forwards}
+.kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#a9c3d4;margin:14px 0 6px;opacity:0;animation:rise .9s .45s var(--ease) forwards}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,9vw,58px);line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em;opacity:0;animation:rise 1s .6s var(--ease) forwards}
+h1 em{font-style:normal;color:var(--bridge)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;opacity:0;animation:rise .9s .85s var(--ease) forwards}
+.chip{font-size:13px;padding:6px 12px;border-radius:99px;background:#ffffff14;border:1px solid #ffffff26;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.scene{position:relative;height:clamp(190px,46vw,320px);margin-top:10px}
+.scene svg{position:absolute;inset:auto 0 0 0;width:100%;height:100%}
+.cable{fill:none;stroke:var(--bridge);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 2.4s .5s var(--ease) forwards}
+.hanger{stroke:var(--bridge);stroke-width:1.2;opacity:0;animation:fade .8s forwards}
+.tower{fill:var(--bridge);transform-box:fill-box;transform-origin:bottom;transform:scaleY(0);animation:grow 1.1s var(--ease) forwards}
+.deck{fill:var(--bridge);opacity:0;animation:fade .8s 1.2s forwards}
+.water{fill:#0b1b28}
+.shine{fill:#ffffff;opacity:.07}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes grow{to{transform:scaleY(1)}}
+@keyframes fade{to{opacity:1}}
+
+.fogband{position:absolute;left:-30%;width:160%;height:90px;pointer-events:none;z-index:2;
+  background:radial-gradient(40% 60% at 20% 50%,#ffffff55,transparent 70%),radial-gradient(35% 55% at 60% 40%,#ffffff40,transparent 70%),radial-gradient(30% 60% at 90% 60%,#ffffff4d,transparent 70%);
+  filter:blur(6px);animation:drift 26s linear infinite alternate}
+.fogband.f1{bottom:26%}
+.fogband.f2{bottom:6%;opacity:.7;animation-duration:34s;animation-direction:alternate-reverse}
+@keyframes drift{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+.scene svg.wave{position:absolute;inset:auto 0 -1px 0;width:100%;height:28px;z-index:3;display:block}
+.wave path{fill:var(--fog)}
+
+/* ---------- PROGRESS DOCK ---------- */
+.dock{position:sticky;top:0;z-index:20;padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:10px;
+  background:color-mix(in srgb,var(--fog) 82%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .3s}
+.dock.stuck{border-bottom-color:var(--line)}
+.dock-in{display:flex;align-items:center;gap:14px}
+.ring{position:relative;width:48px;height:48px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:5}
+.ring .bg{stroke:var(--line)}
+.ring .fg{stroke:var(--bridge);stroke-linecap:round;transition:stroke-dashoffset .7s var(--ease),stroke .4s}
+.ring.full .fg{stroke:var(--kelp)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:13px;font-variant-numeric:tabular-nums}
+.dock-txt{min-width:0}
+.dock-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.dock-next{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dock-next span{color:var(--bridge);font-variant-numeric:tabular-nums}
+
+/* ---------- TIMELINE ---------- */
+main{padding-block:18px 40px}
+.intro{color:var(--muted);margin:6px 0 22px;max-width:58ch}
+ol.day{list-style:none;margin:0;padding:0;position:relative}
+ol.day::before{content:"";position:absolute;left:23px;top:24px;bottom:24px;width:2px;
+  background:repeating-linear-gradient(to bottom,var(--line) 0 6px,transparent 6px 12px)}
+.stop{position:relative;display:grid;grid-template-columns:48px 1fr;gap:14px;margin-bottom:18px}
+.js .stop{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.js .stop.seen{opacity:1;transform:none}
+
+.tick{position:relative;width:48px;height:48px;border-radius:50%;border:2px solid var(--line);background:var(--paper);cursor:pointer;
+  display:grid;place-items:center;padding:0;transition:transform .25s var(--ease),background .3s,border-color .3s;-webkit-tap-highlight-color:transparent}
+.tick:hover{border-color:var(--bridge)}
+.tick:active{transform:scale(.9)}
+.tick:focus-visible{outline:3px solid var(--bridge);outline-offset:3px}
+.tick svg{width:22px;height:22px}
+.tick path{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:30;stroke-dashoffset:30;transition:stroke-dashoffset .4s .1s var(--ease)}
+.num{position:absolute;font-family:var(--display);font-size:18px;color:var(--muted);transition:opacity .2s}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px 14px;min-width:0;
+  box-shadow:0 1px 0 #0000000a,0 10px 24px -18px #0f223355;transition:background .4s,border-color .4s,transform .3s var(--ease)}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.time{font-family:var(--display);font-size:24px;line-height:1;font-variant-numeric:tabular-nums}
+.dur{font-size:13px;color:var(--muted)}
+.tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:var(--bridge-soft);color:var(--bridge)}
+.tag.now{background:var(--bridge);color:#fff;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--bridge) 55%,transparent)}50%{box-shadow:0 0 0 7px transparent}}
+h2{font-family:var(--display);font-weight:400;font-size:24px;line-height:1.15;margin:8px 0 6px;text-wrap:balance;position:relative;display:inline-block}
+h2::after{content:"";position:absolute;left:0;top:55%;height:2px;width:100%;background:var(--kelp);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.card p{margin:0 0 10px}
+details{border-top:1px dashed var(--line);margin-top:10px;padding-top:8px}
+summary{cursor:pointer;font-size:14px;font-weight:600;color:var(--bridge);list-style:none;display:flex;align-items:center;gap:6px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;border:1.5px solid currentColor;font-size:13px;line-height:1;transition:transform .3s var(--ease)}
+details[open] summary::before{transform:rotate(45deg)}
+details p{font-size:15px;color:var(--muted);margin:8px 0 2px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.links a{font-size:14px;font-weight:600;text-decoration:none;padding:7px 13px;border-radius:99px;border:1px solid var(--line);display:inline-flex;align-items:center;gap:6px;transition:border-color .2s,background .2s,transform .2s var(--ease)}
+.links a:hover{border-color:var(--bridge);transform:translateY(-1px)}
+.links a.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+.leg{grid-column:2;margin:-6px 0 18px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.leg i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--paper);border:1px solid var(--line);font-size:12px}
+.leg b{color:var(--ink);font-weight:600}
+
+/* estado hecho */
+.stop.done .tick{background:var(--kelp);border-color:var(--kelp)}
+.stop.done .tick path{stroke-dashoffset:0}
+.stop.done .num{opacity:0}
+.stop.done .card{background:var(--kelp-soft);border-color:transparent;box-shadow:none}
+.stop.done h2::after{transform:scaleX(1)}
+.stop.done .card p,.stop.done details,.stop.done .links,.stop.done .dur{opacity:.55}
+.stop.current .card{border-color:var(--bridge);box-shadow:0 0 0 3px var(--bridge-soft),0 14px 30px -18px #e2533c88}
+
+/* corazones */
+.heart{position:fixed;pointer-events:none;z-index:50;font-size:16px;color:var(--bridge);will-change:transform,opacity;animation:burst .9s var(--ease) forwards}
+@keyframes burst{from{transform:translate(-50%,-50%) scale(.4);opacity:1}to{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.1) rotate(var(--r));opacity:0}}
+
+/* plan B */
+.planb{margin-top:30px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.planb h3{font-family:var(--display);font-weight:400;font-size:24px;margin:0 0 10px}
+.planb ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.planb li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start}
+.planb li span{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--bridge-soft);color:var(--bridge);font-weight:700;font-size:14px}
+
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{font:inherit;font-size:14px;font-weight:600;border-radius:99px;padding:10px 16px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.btn:hover{color:var(--ink);border-color:var(--ink)}
+.btn.warn{color:var(--bridge);border-color:var(--bridge)}
+footer{text-align:center;padding-block:30px calc(env(safe-area-inset-bottom) + 30px);color:var(--muted);font-size:14px}
+footer .sig{font-family:var(--script);font-size:34px;color:var(--bridge);display:block;line-height:1.2}
+
+/* celebración */
+.celebrate{position:fixed;inset:0;z-index:60;display:grid;place-items:center;background:color-mix(in srgb,var(--night) 82%,transparent);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:0;pointer-events:none;transition:opacity .5s}
+.celebrate.on{opacity:1;pointer-events:auto}
+.celebrate div{text-align:center;color:#fff;padding:24px;transform:scale(.92);transition:transform .6s var(--ease)}
+.celebrate.on div{transform:none}
+.celebrate .names{opacity:1;animation:none;font-size:56px}
+.celebrate p{font-family:var(--display);font-size:28px;margin:6px 0 20px}
+.celebrate .btn{color:#fff;border-color:#ffffff66}
+
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 20px);transform:translate(-50%,30px);opacity:0;z-index:40;
+  background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:99px;font-size:14px;font-weight:600;transition:all .35s var(--ease);white-space:nowrap}
+.toast.on{transform:translate(-50%,0);opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .js .stop{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-text gut"><div class="wrap hero-grid">
+    <figure class="portrait"><img src="nosotros.jpg" alt="Javi y María saliendo del altar el día de su boda" width="700" height="807"></figure>
+    <div class="hero-copy">
+    <p class="names">Javi &amp; María</p>
+    <p class="kicker">Luna de miel · San Francisco</p>
+    <h1>Un día entre el <em>puente</em> y la bahía</h1>
+    <div class="chips">
+      <span class="chip">Martes 20 oct 2026</span>
+      <span class="chip">Salida: The Huntington, Nob Hill</span>
+      <span class="chip">Máx. 18 °C · nubes por la mañana</span>
+    </div>
+    </div>
+  </div></div>
+  <div class="scene" aria-hidden="true">
+    <div class="fogband f1"></div>
+    <svg viewBox="0 0 1200 360" preserveAspectRatio="xMidYMax slice" id="bridge">
+      <rect class="water" x="0" y="300" width="1200" height="60"/>
+      <rect class="shine" x="140" y="314" width="260" height="2" rx="1"/>
+      <rect class="shine" x="620" y="326" width="340" height="2" rx="1"/>
+      <rect class="shine" x="360" y="340" width="200" height="2" rx="1"/>
+      <g id="hangers"></g>
+      <g>
+        <rect class="tower" x="368" y="70" width="10" height="232" style="animation-delay:.1s"/>
+        <rect class="tower" x="394" y="70" width="10" height="232" style="animation-delay:.15s"/>
+        <rect class="tower" x="368" y="96" width="36" height="6" style="animation-delay:.3s"/>
+        <rect class="tower" x="368" y="150" width="36" height="6" style="animation-delay:.35s"/>
+        <rect class="tower" x="368" y="206" width="36" height="6" style="animation-delay:.4s"/>
+        <rect class="tower" x="796" y="70" width="10" height="232" style="animation-delay:.2s"/>
+        <rect class="tower" x="822" y="70" width="10" height="232" style="animation-delay:.25s"/>
+        <rect class="tower" x="796" y="96" width="36" height="6" style="animation-delay:.4s"/>
+        <rect class="tower" x="796" y="150" width="36" height="6" style="animation-delay:.45s"/>
+        <rect class="tower" x="796" y="206" width="36" height="6" style="animation-delay:.5s"/>
+      </g>
+      <rect class="deck" x="0" y="246" width="1200" height="7"/>
+      <path class="cable" id="cable" d="M0 214 Q193 250 386 74 Q600 300 814 74 Q1007 250 1200 214"/>
+    </svg>
+    <div class="fogband f2"></div>
+    <svg class="wave" viewBox="0 0 1200 28" preserveAspectRatio="none"><path d="M0 14 C150 0 300 28 450 14 S750 0 900 14 S1100 28 1200 12 V28 H0Z"/></svg>
+  </div>
+</header>
+
+<div class="dock gut" id="dock">
+  <div class="wrap dock-in">
+    <div class="ring" id="ring">
+      <svg width="48" height="48" viewBox="0 0 48 48"><circle class="bg" cx="24" cy="24" r="20"/><circle class="fg" id="ringfg" cx="24" cy="24" r="20"/></svg>
+      <b id="ringtxt">0/10</b>
+    </div>
+    <div class="dock-txt">
+      <div class="dock-label" id="docklabel">Siguiente parada</div>
+      <div class="dock-next" id="docknext">—</div>
+    </div>
+  </div>
+</div>
+
+<main class="gut">
+  <div class="wrap">
+    <p class="intro">Tocad el círculo de cada parada cuando la hayáis hecho. Cada parada tiene su mapa y un consejo escondido en el “+”.</p>
+    <ol class="day" id="day"></ol>
+
+    <section class="planb">
+      <h3>Si algo se tuerce</h3>
+      <ul>
+        <li><span>1</span><div><b>Niebla en el puente.</b> Alargad el paseo por Crissy Field; a media mañana suele levantar.</div></li>
+        <li><span>2</span><div><b>Sin Uber en Battery Spencer.</b> No esperéis más de 10 minutos. Saltadla y bajad directos a Sausalito.</div></li>
+        <li><span>3</span><div><b>El ferry no encaja.</b> Uber de vuelta por el puente, unos 30 minutos.</div></li>
+        <li><span>4</span><div><b>Cansados a media tarde.</b> Saltad Twin Peaks y volved antes al hotel. La noche en Chinatown y North Beach queda a un paseo.</div></li>
+      </ul>
+    </section>
+
+    <figure class="origin" id="origin">
+      <img src="iglesia.jpg" alt="La ceremonia de nuestra boda, vista desde el coro" width="900" height="1484" loading="lazy">
+      <figcaption><span class="script">Donde empezó todo</span><span class="line">Octubre de 2026. Ahora, San Francisco.</span></figcaption>
+    </figure>
+
+    <div class="actions">
+      <button class="btn" id="resetBtn" type="button">Empezar de cero</button>
+      <span id="confirm" class="confirm" hidden>
+        <button class="btn warn" id="resetYes" type="button">Sí, desmarcar todo</button>
+        <button class="btn" id="resetNo" type="button">Cancelar</button>
+      </span>
+    </div>
+  </div>
+</main>
+
+<footer class="gut">
+  <span class="sig">J &amp; M</span>
+  Recién casados · octubre de 2026
+</footer>
+
+<div class="celebrate" id="celebrate" role="dialog" aria-modal="true" aria-labelledby="celtitle">
+  <div>
+    <p class="names">Javi &amp; María</p>
+    <p id="celtitle">Día completado</p>
+    <button class="btn" id="celclose" type="button">Volver a la ruta</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+document.documentElement.classList.add("js");
+
+/* ---------- puente: péndolas generadas sobre la curva del cable ---------- */
+(function(){
+  const g = document.getElementById("hangers"), NS = "http://www.w3.org/2000/svg";
+  const segs = [[0,214,193,250,386,74],[386,74,600,300,814,74],[814,74,1007,250,1200,214]];
+  const q = (p0,p1,p2,t)=> (1-t)*(1-t)*p0 + 2*(1-t)*t*p1 + t*t*p2;
+  let i = 0;
+  segs.forEach(s => {
+    for (let t = 0.06; t < 1; t += 0.06){
+      const x = q(s[0],s[2],s[4],t), y = q(s[1],s[3],s[5],t);
+      if (y > 240) continue;
+      const l = document.createElementNS(NS,"line");
+      l.setAttribute("x1",x); l.setAttribute("x2",x); l.setAttribute("y1",y); l.setAttribute("y2",247);
+      l.setAttribute("class","hanger"); l.style.animationDelay = (1.4 + (i++)*0.025) + "s";
+      g.appendChild(l);
+    }
+  });
+})();
+
+/* ---------- datos ---------- */
+const maps = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+const STOPS = [
+  {id:"crissy", t:"09:00", end:"09:40", dur:"40 min", name:"Crissy Field",
+   desc:"Uber desde el hotel hasta Crissy Field East Beach, unos 15 minutos. Paseo por la playa y el paseo marítimo con el Golden Gate de frente.",
+   tip:"Si os apetece caminar, seguid el paseo hasta el puente. Si no, pedid un Uber corto desde mitad de camino.",
+   links:[["Abrir en Maps", maps("Crissy Field East Beach San Francisco"), 1]],
+   leg:["🚶","A pie o Uber corto", "hasta el Welcome Center"]},
+  {id:"bridge", t:"10:25", end:"11:05", dur:"40 min", name:"Golden Gate Bridge",
+   desc:"Welcome Center, fotos y un tramo a pie por la pasarela. No hace falta cruzarlo entero.",
+   tip:"Arriba hace viento y frío aunque abajo no lo parezca. Llevad una capa extra.",
+   links:[["Abrir en Maps", maps("Golden Gate Bridge Welcome Center"), 1]],
+   leg:["🚗","Uber", "al otro lado del puente, unos 10 min"]},
+  {id:"spencer", t:"11:15", end:"11:40", dur:"25 min", name:"Battery Spencer", tag:"Saltable",
+   desc:"La vista más espectacular del puente, desde arriba en Marin Headlands.",
+   tip:"Pedid el Uber de salida en cuanto lleguéis. Allí escasean la cobertura y los coches. Si no aparece ninguno en 10 minutos, saltadla.",
+   links:[["Abrir en Maps", maps("Battery Spencer Sausalito CA"), 1]],
+   leg:["🚗","Uber", "a Sausalito, unos 10 min"]},
+  {id:"sausalito", t:"12:00", end:"12:20", dur:"20 min", name:"Paseo por Sausalito",
+   desc:"Bajad por Bridgeway junto al agua, entre barcos y casas en la ladera, hasta el restaurante.",
+   links:[["Abrir en Maps", maps("Bridgeway Sausalito CA"), 1]],
+   leg:["🚶","A pie", "en el mismo paseo"]},
+  {id:"lunch", t:"12:20", end:"13:35", dur:"1 h 15 min", name:"Comida en Barrel House Tavern",
+   desc:"Cocina californiana y marisco con vistas a la bahía. Está en el 660 Bridgeway, segunda planta, y tiene terraza sobre el agua.",
+   tip:"Reservad en OpenTable y pedid ventana o terraza. Alternativa rápida: Sausalito Bakery & Cafe.",
+   links:[["Reservar", "https://www.opentable.com/r/barrel-house-tavern-sausalito", 1],["Maps", maps("Barrel House Tavern 660 Bridgeway Sausalito")],["Web", "https://www.barrelhousetavern.com/"]],
+   leg:["⛴️","Ferry", "cruzando la bahía, unos 30 min"]},
+  {id:"ferry", t:"13:45", end:"14:20", dur:"30 min", name:"Ferry a San Francisco",
+   desc:"Volver por agua, pasando junto a Alcatraz y con el skyline delante.",
+   tip:"Mirad la hora de salida al llegar a Sausalito. Golden Gate Ferry va al Ferry Building y Blue & Gold, a Pier 41. Si no encaja, Uber.",
+   links:[["Golden Gate Ferry", "https://www.goldengate.org/ferry/", 1],["Blue & Gold", "https://www.blueandgoldfleet.com/"]],
+   leg:["🚗","Uber", "a Alamo Square, unos 15 min"]},
+  {id:"painted", t:"14:45", end:"15:15", dur:"30 min", name:"Painted Ladies",
+   desc:"Las casas victorianas de colores y el skyline desde el césped de Alamo Square.",
+   links:[["Abrir en Maps", maps("Alamo Square Painted Ladies San Francisco"), 1]],
+   leg:["🚗","Uber", "a Twin Peaks, o vuelta al hotel"]},
+  {id:"twin", t:"15:30", end:"16:15", dur:"45 min", name:"Twin Peaks", tag:"Opcional",
+   desc:"Vista de 360° sobre la ciudad y la bahía si está despejado.",
+   tip:"Si preferís verlo al atardecer (hacia las 18:30), subid entonces y bajad a Chinatown después en Uber, unos 20 minutos. Arriba sopla: abrigo.",
+   links:[["Abrir en Maps", maps("Twin Peaks San Francisco"), 1]],
+   leg:["🛏️","Uber al hotel", "y un rato de descanso antes de la noche"]},
+  {id:"chinatown", t:"18:00", end:"19:00", dur:"1 h", name:"Chinatown al anochecer", tag:"Nuevo",
+   desc:"Bajad andando desde el hotel, unos 10 minutos. Entrad por la Dragon Gate y recorred Grant Avenue de punta a punta con los farolillos encendidos.",
+   tip:"Meteos por los callejones laterales, que son lo más auténtico. Si os apetece, coged el cable car de California Street en la puerta del hotel: baja por el borde de Chinatown.",
+   links:[["Abrir en Maps", maps("Dragon Gate Chinatown San Francisco"), 1],["Grant Avenue", maps("Grant Avenue Chinatown San Francisco")]],
+   leg:["🚶","A pie", "siguiendo Grant Avenue hasta North Beach, unos 10 min"]},
+  {id:"dinner", t:"19:15", end:"21:00", dur:"Sin prisa", name:"Cena en North Beach", tag:"Nuevo",
+   desc:"El barrio italiano, pegado a Chinatown: trattorias, cafés y mucho ambiente por las noches. Cierre perfecto para el día.",
+   tip:"Al terminar, Uber de vuelta al hotel en unos 5 minutos, o subid andando si os quedan piernas (es cuesta arriba).",
+   links:[["Abrir en Maps", maps("North Beach San Francisco restaurants"), 1]]}
+];
+
+/* ---------- estado ---------- */
+const KEY = "jm-sf-20oct";
+let done = {};
+try { done = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(done)); } catch(e){} };
+
+/* hora en San Francisco */
+function sfNow(){
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false})
+    .formatToParts(new Date()).map(x=>[x.type,x.value]));
+  return {date:`${p.year}-${p.month}-${p.day}`, time:`${p.hour === "24" ? "00" : p.hour}:${p.minute}`};
+}
+const TRIP_DATE = "2026-10-20";
+
+/* ---------- render ---------- */
+const day = document.getElementById("day");
+STOPS.forEach((s, idx) => {
+  const li = document.createElement("li");
+  li.className = "stop"; li.id = "stop-" + s.id;
+  li.innerHTML = `
+    <button class="tick" type="button" aria-pressed="false" aria-label="Marcar ${s.name} como hecha">
+      <span class="num">${idx+1}</span>
+      <svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </button>
+    <article class="card">
+      <div class="meta"><span class="time">${s.t.replace(/^0/,"")}</span><span class="dur">${s.dur}</span>${s.tag?`<span class="tag">${s.tag}</span>`:""}<span class="tag now" hidden>Ahora</span></div>
+      <h2>${s.name}</h2>
+      <p>${s.desc}</p>
+      ${s.tip?`<details><summary>Consejo</summary><p>${s.tip}</p></details>`:""}
+      <div class="links">${s.links.map(([t,u,p])=>`<a ${p?'class="primary"':''} href="${u}" target="_blank" rel="noopener">${t} ↗</a>`).join("")}</div>
+    </article>`;
+  li.querySelector(".tick").addEventListener("click", e => toggle(s, e.currentTarget));
+  day.appendChild(li);
+  if (s.leg){
+    const leg = document.createElement("li");
+    leg.className = "stop leg-row"; leg.style.display = "block"; leg.style.marginBottom = "0";
+    leg.innerHTML = `<div class="leg" style="margin-left:62px"><i>${s.leg[0]}</i><span><b>${s.leg[1]}</b> ${s.leg[2]}</span></div>`;
+    day.appendChild(leg);
+  }
+});
+
+function toggle(s, btn){
+  done[s.id] = !done[s.id]; save();
+  if (done[s.id]){
+    burst(btn);
+    try { navigator.vibrate && navigator.vibrate(18); } catch(e){}
+    toast(pick(["¡Hecho! 💛","Una menos","Qué bonito ha sido","Siguiente parada…"]));
+  }
+  update(true);
+}
+const pick = a => a[Math.floor(Math.random()*a.length)];
+
+function update(fromClick){
+  const now = sfNow();
+  const isToday = now.date === TRIP_DATE;
+  let n = 0, next = null, current = null;
+  STOPS.forEach(s => {
+    const li = document.getElementById("stop-" + s.id);
+    const d = !!done[s.id]; if (d) n++;
+    li.classList.toggle("done", d);
+    li.querySelector(".tick").setAttribute("aria-pressed", d);
+    const live = isToday && !d && now.time >= s.t && now.time < s.end;
+    li.querySelector(".tag.now").hidden = !live;
+    if (live && !current) current = s;
+    if (!d && !next) next = s;
+  });
+  STOPS.forEach(s => document.getElementById("stop-" + s.id).classList.toggle("current", (current||next) === s));
+
+  const C = 2*Math.PI*20, fg = document.getElementById("ringfg");
+  fg.style.strokeDasharray = C; fg.style.strokeDashoffset = C * (1 - n/STOPS.length);
+  document.getElementById("ring").classList.toggle("full", n === STOPS.length);
+  document.getElementById("ringtxt").textContent = `${n}/${STOPS.length}`;
+  const f = current || next;
+  document.getElementById("docklabel").textContent = current ? "Ahora mismo" : (next ? "Siguiente parada" : "Todo hecho");
+  document.getElementById("docknext").innerHTML = f ? `<span>${f.t.replace(/^0/,"")}</span> · ${f.name}` : "Día completado 💛";
+
+  if (fromClick && n === STOPS.length) setTimeout(()=>document.getElementById("celebrate").classList.add("on"), 450);
+}
+
+/* ---------- efectos ---------- */
+function burst(el){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const r = el.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height/2;
+  for (let i = 0; i < 12; i++){
+    const h = document.createElement("span");
+    h.className = "heart"; h.textContent = "♥";
+    const a = (Math.PI*2*i)/12 + Math.random()*.4, d = 40 + Math.random()*40;
+    h.style.left = cx+"px"; h.style.top = cy+"px";
+    h.style.setProperty("--x", Math.cos(a)*d+"px"); h.style.setProperty("--y", Math.sin(a)*d+"px");
+    h.style.setProperty("--r", (Math.random()*80-40)+"deg");
+    h.style.fontSize = (11 + Math.random()*9) + "px";
+    document.body.appendChild(h); setTimeout(()=>h.remove(), 950);
+  }
+}
+let tt;
+function toast(msg){
+  const t = document.getElementById("toast"); t.textContent = msg; t.classList.add("on");
+  clearTimeout(tt); tt = setTimeout(()=>t.classList.remove("on"), 1600);
+}
+
+/* aparición al hacer scroll */
+const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("seen"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -8% 0px"}) : null;
+document.querySelectorAll(".stop, .origin").forEach(el => io ? io.observe(el) : el.classList.add("seen"));
+
+/* sombra del dock al quedarse fijo */
+const dock = document.getElementById("dock");
+const sentinel = document.querySelector(".hero");
+if ("IntersectionObserver" in window){
+  new IntersectionObserver(([e]) => dock.classList.toggle("stuck", !e.isIntersecting)).observe(sentinel);
+}
+dock.addEventListener("click", () => {
+  const f = document.querySelector(".stop.current");
+  if (f) f.scrollIntoView({behavior:"smooth", block:"center"});
+});
+
+/* reset con confirmación */
+const confirmBox = document.getElementById("confirm");
+document.getElementById("resetBtn").onclick = () => confirmBox.hidden = false;
+document.getElementById("resetNo").onclick = () => confirmBox.hidden = true;
+document.getElementById("resetYes").onclick = () => { done = {}; save(); confirmBox.hidden = true; update(); toast("Ruta reiniciada"); window.scrollTo({top:0,behavior:"smooth"}); };
+document.getElementById("celclose").onclick = () => document.getElementById("celebrate").classList.remove("on");
+
+update();
+setInterval(update, 60000);
+</script>
+</body>
+</html>
